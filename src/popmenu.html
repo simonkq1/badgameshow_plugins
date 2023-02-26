@@ -1,0 +1,37 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <div id="float_menu_header" class="">
+        Menu
+    </div>
+    <div>
+        <div id="float_layer">
+            This is my DIV element.
+        </div>
+        <button onclick="myFunction()">Click Me</button>
+    </div>
+</body>
+<script>
+
+    function myFunction() {
+        var x = document.getElementById("float_layer");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>
+<style>
+    .float_menu_bar{width:300px;height: 55px;border:1px solid rgb(#000);display:block;background:#9edbff72;z-index:9999;position:fixed;bottom:15px;right:15px}
+    .round_border {border-radius: 5px;}
+    .white-text {color: #fff;}
+    .float_layer{width:300px;border:1px solid #aaa;display:block;background:#fff;z-index:9999;position:fixed;bottom:15px;right:15px}
+    .float_layer .content {min-height: 50px; overflow: hidden; font-size: 14px; line-height: 18px; color: #666; text-indent: 28px; }
+</style>
+
+</html>

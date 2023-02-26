@@ -1,0 +1,33 @@
+<select name="mode" style="width: 160px">
+<option value="7" style="background-color: yellow;">神秘的湖泊</option>
+<option value="8" style="background-color: yellow;">黃金宮殿</option>
+<option value="9" style="background-color: yellow;">暗黑雪原</option>
+<option value="11" style="background-color: yellow;">藍天之下</option>
+<option value="20" style="background-color: yellow;">冒險者的試煉</option>
+<option value="21" style="background-color: yellow;">勇者的試練</option>
+<option value="22" style="background-color: yellow;">英雄的試練</option>
+<option value="1">雅特蜜絲 草原</option>
+<option value="2">雅特蜜絲 沼地</option>
+<option value="3">雅特蜜絲 森林</option>
+<option value="4">雅特蜜絲 高塔</option>
+<option value="30">雅特蜜絲 廢城</option>
+<option value="31">雅特蜜絲 禁地5層</option>
+<option value="40">雅特蜜絲 魔王城</option>
+<option value="41">雅特蜜絲 寶箱的廢棄船</option>
+<option value="51">雅特蜜絲 廢棄後山</option>
+<option value="57" style="background-color: rgb(86, 245, 105);">地獄(－銀行10萬)</option>
+<option value="39" style="background-color: rgb(86, 245, 105);">光明草原(－500熟)</option>
+<option value="42" style="background-color: rgb(86, 245, 105);">藍天之下(－3000熟)</option>
+<option value="100" style="background-color: rgb(255, 45, 45);">========世界地圖=========</option>
+<option value="43">艾恩葛朗特20層</option>
+<option value="58" style="background-color: rgb(86, 245, 105);">古埃及(－銀行5萬－250熟)</option>
+<option value="100" style="background-color: rgb(255, 45, 45);">========活動地圖=========</option>
+<option value="59">星空的餽贈 - 健身器材</option>
+<option value="100" style="background-color: rgb(255, 45, 45);">==========PVP===========</option>
+<option value="kunren">訓練</option>
+<option value="toubatsu">討伐</option>
+<option value="check" style="background-color: yellow;">上塔之門</option>
+</select>
+
+<input type="button" class="FC" style="width:100px;height:50px" value="一般鑰匙" onclick="javascript:parent.backtown()" name="B1">
+<input type="button" class="FC" value="魔王鑰匙" style="width:100px;height:50px;background-color:#ff6699" onclick="javascript:submits2('')" name="B1">
