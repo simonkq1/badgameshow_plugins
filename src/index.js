@@ -115,7 +115,7 @@ function autoTowerCheckboxAction(event) {
 function startTracker() {
     stopTracker()
     interval = setInterval(() => {
-        if (main.inBossRoom() && autoTower) {
+        if (main.inBossRoom() && autoBoss) {
             console.log("In Boss Room")
             const bossButton = main.findBossButton()
             if (bossButton !== null && bossButton !== undefined) {
