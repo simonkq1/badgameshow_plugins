@@ -136,7 +136,7 @@ function startTracker() {
                 autoTowerBattle()
             }
         }
-        else if (main.isBattlePage()) {
+        else if (main.isBattlePage() && (autoBoss || autoTower)) {
             backtown()
         }
 
