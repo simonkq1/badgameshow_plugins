@@ -16,7 +16,8 @@ import Pages from "./Pages";
 import etc from "./etc";
 
 var rnd = "";
-var interval = undefined;
+var intervalId = undefined;
+var interval = 3000;
 var autoTower = false;
 var autoBoss = false;
 var currentMode = undefined;
@@ -28,12 +29,12 @@ var main = undefined;
 (function () {
     'use strict';
     const page = getPageName()
-    autoBoss = GM_getValue('auto_boss')
-    autoTower = GM_getValue('auto_tower')
-    currentMode = GM_getValue('current_mode')
+    checkConfig()
     console.log("Auto Tower: " + autoTower)
     console.log("Auto Boss: " + autoBoss)
     console.log("Current Mode: " + currentMode)
+    console.log("Floor Limit: " + floorLimit)
+    console.log("Interval: " + interval)
     if (autoTower === undefined || autoTower === null) {
         autoTower = false
     }
@@ -57,7 +58,34 @@ var main = undefined;
 })();
 
 function getPageName() {
-    return document.URL.match(/https:\/\/badgameshow.com\/(.*).cgi/i)[1];
+    return document.URL.match(/http[s]?:\/\/badgameshow.com\/(.*).cgi/i)[1];
+}
+function checkConfig() {
+    autoBoss = GM_getValue('auto_boss')
+    autoTower = GM_getValue('auto_tower')
+    currentMode = GM_getValue('current_mode')
+    floorLimit = GM_getValue('floor_limit')
+    interval = GM_getValue('interval')
+    if (autoBoss == undefined) {
+        autoBoss = false
+        GM_setValue('auto_boss', autoBoss)
+    }
+    if (autoTower == undefined) {
+        autoTower = false
+        GM_setValue('auto_tower', autoTower)
+    }
+    if (currentMode == undefined) {
+        currentMode = ""
+        GM_setValue('current_mode', currentMode)
+    }
+    if (floorLimit == undefined) {
+        floorLimit = 80
+        GM_setValue('floor_limit', floorLimit)
+    }
+    if (interval == undefined) {
+        interval = 3000
+        GM_setValue('interval', interval)
+    }
 }
 
 function addAutoBossCheckbox() {
@@ -114,7 +142,7 @@ function autoTowerCheckboxAction(event) {
 
 function startTracker() {
     stopTracker()
-    interval = setInterval(() => {
+    intervalId = setInterval(() => {
         if (main.inBossRoom() && autoBoss) {
             console.log("In Boss Room")
             const bossButton = main.findBossButton()
@@ -143,13 +171,13 @@ function startTracker() {
         else if (main.isWarningPage()) {
             backtown()
         }
-    }, 3000);
+    }, interval);
 }
 
 function stopTracker() {
-    if (interval !== undefined) {
-        clearInterval(interval)
-        interval = undefined
+    if (intervalId !== undefined) {
+        clearInterval(intervalId)
+        intervalId = undefined
     }
 }
 function towerTracker() {

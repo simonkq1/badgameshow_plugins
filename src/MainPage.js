@@ -104,13 +104,11 @@ export default class MainPage {
   }
   isBattlePage() {
     const elements = this.iframeContents().find('table.TOC')
-    console.log(elements)
     return elements.length > 0
   }
 
   isWarningPage() {
     const elements = this.iframeContents().find('table.TC font b')
-    console.log(elements)
     return elements.length > 0 && elements[0].innerText == "警 告123"
   }
 
@@ -123,7 +121,6 @@ export default class MainPage {
 
   clickReturnButtonInBattlePage() {
     const element = this.iframeContents().find('input.FC[value="[F4]回到城鎮"]')
-    console.log(element)
     if (element.length > 0) {
       element[0].click()
     }
