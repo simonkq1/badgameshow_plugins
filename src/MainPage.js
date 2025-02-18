@@ -94,7 +94,7 @@ export default class MainPage {
     return false
   }
   findBossButton() {
-    const buttons = this.iframeContents().find('input.FC[value="魔王鑰匙"]')
+    const buttons = this.iframeContents().find('input.FC[value="🗝️"]')
     if (buttons.length > 0) {
       return buttons[0]
     }
