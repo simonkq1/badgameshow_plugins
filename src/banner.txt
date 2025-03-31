@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto Boss - badgameshow.com
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  badgameshow auto boss plugins!
 // @author       simonkq1
 // @match        https://badgameshow.com/top.cgi
