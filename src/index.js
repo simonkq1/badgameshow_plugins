@@ -36,6 +36,7 @@ var excludeList = [22, 74, 75];
     console.log("Current Mode: " + currentMode)
     console.log("Floor Limit: " + floorLimit)
     console.log("Interval: " + interval)
+    console.log("ExcludeList: " + JSON.stringify(excludeList))
     if (autoTower === undefined || autoTower === null) {
         autoTower = false
     }
