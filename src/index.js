@@ -25,6 +25,7 @@ var floorLimit = 80;
 var bossFailed = 0;
 /** @type {MainPage} */
 var main = undefined;
+var excludeList = [22, 74, 75];
 
 (function () {
     'use strict';
@@ -66,6 +67,7 @@ function checkConfig() {
     currentMode = GM_getValue('current_mode')
     floorLimit = GM_getValue('floor_limit')
     interval = GM_getValue('interval')
+    excludeList = GM_getValue('exclude_list')
     if (autoBoss == undefined) {
         autoBoss = false
         GM_setValue('auto_boss', autoBoss)
@@ -85,6 +87,12 @@ function checkConfig() {
     if (interval == undefined) {
         interval = 3000
         GM_setValue('interval', interval)
+    }
+    if (excludeList == undefined) {
+        excludeList = []
+        GM_setValue('exclude_list', JSON.stringify(excludeList))
+    }else {
+        excludeList = JSON.parse(excludeList)
     }
 }
 
@@ -195,6 +203,9 @@ function towerTracker() {
 function autoTowerBattle() {
     const modeSelector = main.getModeSelector()
     const highest = main.highestFloor()
+    if (checkExcludeFloor(highest)) {
+        return
+    }
     if (modeSelector !== undefined && highest !== undefined) {
         if (modeSelector[0].value == "1") {
             if (highest <= floorLimit) {
@@ -226,4 +237,8 @@ function modeSelectorListener() {
             GM_setValue('current_mode', currentMode)
         })
     }
+}
+
+function checkExcludeFloor(current) {
+    return excludeList.includes(current)
 }
