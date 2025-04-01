@@ -21,7 +21,7 @@ var interval = 3000;
 var autoTower = false;
 var autoBoss = false;
 var currentMode = undefined;
-var floorLimit = 80;
+var floorLimit = 100;
 var bossFailed = 0;
 /** @type {MainPage} */
 var main = undefined;
@@ -204,9 +204,6 @@ function towerTracker() {
 function autoTowerBattle() {
     const modeSelector = main.getModeSelector()
     const highest = main.highestFloor()
-    if (checkExcludeFloor(highest)) {
-        return
-    }
     if (modeSelector !== undefined && highest !== undefined) {
         if (modeSelector[0].value == "1") {
             if (highest <= floorLimit) {
@@ -219,6 +216,10 @@ function autoTowerBattle() {
 }
 function autoBossBattle() {
     const modeSelector = main.getModeSelector()
+    const highest = main.highestFloor()
+    if (checkExcludeFloor(highest)) {
+        return
+    }
     if (modeSelector.length > 0 && modeSelector[modeSelector.length - 1].value === "check") {
         modeSelector.value = modeSelector[modeSelector.length - 1].value
         main.clickBattleButton()
