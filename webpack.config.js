@@ -12,49 +12,49 @@ const root = src => path.join(__dirname, './', src)
 process.noDeprecation = false
 // 設定檔主體
 module.exports = {
-  mode: 'production',
-  /**
-   | 進入點，可以是單一字串或物件
-   | 如果是物件，每一個key都會是一個檔案
-   */
-  entry: {
-    app: [
-      './src/index.js'
-    ]
-  },
-  /*
-   | 結果輸出的資料夾
-   | [name].js的 name 將會是entry 物件的 key
-   */
-  output: {
-    path: path.resolve(__dirname, 'build/'),
-    filename: '[name].js',
-  },
-  /*
-   | 這裡開始定義對哪些檔案使用哪些loader.
-   */
-  module: {
-    // rules 是一個陣列，接受多個物件
-    rules: [
-      // 規則一 編譯js file
-      {
-        // 副檔名
-        test: /\.js$/,
-        // 排除目錄
-        exclude: /(node_modules|bower_components)/,
-        // 使用 babel-loader, 我們將把babel設定寫在 .babelrc檔案之中
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-    ]
-  },
-  plugins: [
-    /*
-     | 如果執行環境是 Production, 那麼就將程式 minimize
+    mode: 'production',
+    /**
+     | 進入點，可以是單一字串或物件
+     | 如果是物件，每一個key都會是一個檔案
      */
-    new webpack.LoaderOptionsPlugin({
-      minimize: isProduction
-    })
-  ]
+    entry: {
+        badgameshow_plugins: [
+            './src/index.js'
+        ]
+    },
+    /*
+     | 結果輸出的資料夾
+     | [name].js的 name 將會是entry 物件的 key
+     */
+    output: {
+        path: path.resolve(__dirname, 'build/'),
+        filename: '[name].js',
+    },
+    /*
+     | 這裡開始定義對哪些檔案使用哪些loader.
+     */
+    module: {
+        // rules 是一個陣列，接受多個物件
+        rules: [
+            // 規則一 編譯js file
+            {
+                // 副檔名
+                test: /\.js$/,
+                // 排除目錄
+                exclude: /(node_modules|bower_components)/,
+                // 使用 babel-loader, 我們將把babel設定寫在 .babelrc檔案之中
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+        ]
+    },
+    plugins: [
+        /*
+         | 如果執行環境是 Production, 那麼就將程式 minimize
+         */
+        new webpack.LoaderOptionsPlugin({
+            minimize: isProduction
+        })
+    ]
 }
